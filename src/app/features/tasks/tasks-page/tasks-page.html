@@ -1,0 +1,129 @@
+
+<div class="dashboard">
+
+  <!-- Welcome section -->
+  <div class="welcome-section">
+    <div>
+      <span class="welcome-label">WORKSPACE OVERVIEW</span>
+      <h1>My Tasks</h1>
+      <p>Stay organised and get things done.</p>
+    </div>
+
+    <div class="date-card">
+      <span>Today</span>
+      <strong>{{ today }}</strong>
+    </div>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="summary-grid">
+
+    <div class="summary-card blue">
+      <span class="card-icon">📋</span>
+      <span>Total Tasks</span>
+      <h2>{{ totalTasks() }}</h2>
+      <small>All your tasks</small>
+    </div>
+
+    <div class="summary-card orange">
+      <span class="card-icon">⏳</span>
+      <span>Open Tasks</span>
+      <h2>{{ openTasks() }}</h2>
+      <small>Waiting to be completed</small>
+    </div>
+
+    <div class="summary-card green">
+      <span class="card-icon">✓</span>
+      <span>Completed</span>
+      <h2>{{ completedTasks() }}</h2>
+      <small>Successfully finished</small>
+    </div>
+
+    <div class="summary-card red">
+      <span class="card-icon">⚠</span>
+      <span>Overdue</span>
+      <h2>{{ overdueCount() }}</h2>
+      <small>Past due date</small>
+    </div>
+
+  </div>
+
+  <!-- Task workspace -->
+  <div class="workspace">
+
+    <div class="list-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Task Overview</h2>
+          <p>Manage and track your activities</p>
+        </div>
+
+        <button class="compact-btn" (click)="toggleCompact()">
+          {{ compactView() ? '▣ Normal View' : '☷ Compact View' }}
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-box">
+        <span>⌕</span>
+        <input
+          type="text"
+          placeholder="Search your tasks..."
+          [value]="searchText()"
+          (input)="onSearch($any($event.target).value)"
+        />
+      </div>
+
+      <!-- Status tabs -->
+      <div class="status-tabs">
+        <button
+          [class.active]="selectedStatus() === 'All'"
+          (click)="changeStatus('All')">
+          All
+        </button>
+
+        <button
+          [class.active]="selectedStatus() === 'Open'"
+          (click)="changeStatus('Open')">
+          Open
+        </button>
+
+        <button
+          [class.active]="selectedStatus() === 'Done'"
+          (click)="changeStatus('Done')">
+          Done
+        </button>
+      </div>
+
+      <!-- Loading state -->
+      @if (loading()) {
+        <div class="loading-state">
+          <div class="loader"></div>
+          <p>Loading your tasks...</p>
+        </div>
+      } @else {
+
+        <app-task-list
+          [tasks]="filteredTasks()"
+          [selectedTaskId]="selectedTaskId()"
+          [compactView]="compactView()"
+          (taskSelected)="selectTask($event)"
+        />
+
+      }
+
+    </div>
+
+    <!-- Details panel -->
+    <div class="details-section">
+      <app-task-details
+        [task]="selectedTask()"
+        (markDone)="taskServiceMarkDone($event)"
+        (editTask)="editTask($event)"
+      />
+    </div>
+
+  </div>
+
+</div>

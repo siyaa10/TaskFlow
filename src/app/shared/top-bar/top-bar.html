@@ -1,0 +1,29 @@
+
+<header class="topbar">
+
+  <div class="brand">
+    <div class="brand-icon">T</div>
+    <span>TaskFlow</span>
+  </div>
+
+  <div class="topbar-right">
+
+    <div class="overdue-indicator">
+      <span class="indicator-dot"></span>
+      {{ overdueCount() }} overdue
+    </div>
+
+    <div class="profile">
+      <div class="avatar">
+        {{ userName().charAt(0) }}
+      </div>
+
+      <div class="profile-info">
+        <strong>{{ userName() }}</strong>
+        <span>Workspace Member</span>
+      </div>
+    </div>
+
+  </div>
+
+</header>

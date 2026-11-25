@@ -1,0 +1,156 @@
+
+.edit-page {
+  padding: 35px;
+  min-height: 100%;
+  background: #192943;
+  color: #f1f5f9;
+}
+
+.page-heading {
+  margin-bottom: 28px;
+
+  .eyebrow {
+    color: #a5baff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 9px 0;
+  }
+
+  p {
+    color: #c0cde0;
+    font-size: 13px;
+  }
+}
+
+.form-card {
+  max-width: 700px;
+  background: linear-gradient(145deg, #304968, #263c59);
+  padding: 32px;
+  border: 1px solid #496485;
+  border-radius: 17px;
+  box-shadow: 0 12px 35px #10203935;
+}
+
+.form-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 18px;
+    color: white;
+    margin: 0 0 5px;
+  }
+
+  p {
+    color: #c0cde0;
+    font-size: 11px;
+    margin: 0;
+  }
+}
+
+.form-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #3475ed, #7653dc);
+  color: white;
+  border-radius: 12px;
+  font-size: 21px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+
+  label {
+    color: #e4edfa;
+    font-size: 12px;
+    font-weight: 650;
+  }
+
+  input,
+  select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 47px;
+    border: 1px solid #597493;
+    background: #1e3552;
+    border-radius: 9px;
+    padding: 0 13px;
+    outline: none;
+    font-size: 12px;
+    color: white;
+
+    &:focus {
+      border-color: #91adff;
+      box-shadow: 0 0 0 3px #7797ff25;
+    }
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+}
+
+.error {
+  color: #ffaaaa;
+  font-size: 11px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+
+  button {
+    padding: 12px 22px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+}
+
+.cancel-btn {
+  background: #405a78;
+  border: 1px solid #66809e;
+  color: #ffffff;
+
+  &:hover {
+    background: #506b8b;
+  }
+}
+
+.save-btn {
+  background: linear-gradient(110deg, #3475ed, #7653dc);
+  border: none;
+  color: white;
+  box-shadow: 0 5px 15px #3475ed35;
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-page {
+    padding: 18px;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+}

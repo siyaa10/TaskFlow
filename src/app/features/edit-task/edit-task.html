@@ -1,0 +1,69 @@
+
+<div class="edit-page">
+
+  <div class="page-heading">
+    <span class="eyebrow">TASK MANAGEMENT</span>
+    <h1>Edit Task</h1>
+    <p>Update your task details and save your changes.</p>
+  </div>
+
+  <div class="form-card">
+
+    <div class="form-heading">
+      <div class="form-icon">✎</div>
+      <div>
+        <h2>Task Information</h2>
+        <p>Make changes to your selected task.</p>
+      </div>
+    </div>
+
+    <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+
+      <div class="form-group">
+        <label>Task Title</label>
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Enter task title"
+        />
+
+        @if (taskForm.controls.title.touched &&
+             taskForm.controls.title.invalid) {
+          <small class="error">Task title is required.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Due Date</label>
+        <input type="date" formControlName="dueDate" />
+
+        @if (taskForm.controls.dueDate.touched &&
+             taskForm.controls.dueDate.invalid) {
+          <small class="error">Due date is required.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Task Status</label>
+        <select formControlName="status">
+          <option value="Open">Open</option>
+          <option value="Done">Done</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn"
+          (click)="cancelEdit()">
+          Cancel
+        </button>
+
+        <button type="submit" class="save-btn">
+          Save Changes
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

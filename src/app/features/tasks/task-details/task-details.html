@@ -1,0 +1,54 @@
+
+<div class="details-card">
+
+  @if (task(); as selected) {
+
+    <div class="details-header">
+      <span class="eyebrow">TASK DETAILS</span>
+      <span class="status" [class.done]="selected.status === 'Done'">
+        {{ selected.status }}
+      </span>
+    </div>
+
+    <h2>{{ selected.title }}</h2>
+
+    <p class="description">{{ selected.description }}</p>
+
+    <div class="detail-item">
+      <span>Priority</span>
+      <strong>{{ selected.priority }}</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Due date</span>
+      <strong>{{ selected.dueDate }}</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Task ID</span>
+      <strong>#{{ selected.id }}</strong>
+    </div>
+
+    <div class="actions">
+      @if (selected.status === 'Open') {
+        <button class="done-btn"
+          (click)="markDone.emit(selected.id)">
+          ✓ Mark as Done
+        </button>
+      }
+
+      <button class="edit-btn"
+        (click)="editTask.emit(selected.id)">
+        Edit Task
+      </button>
+    </div>
+
+  } @else {
+    <div class="no-selection">
+      <span>📝</span>
+      <h3>Select a task</h3>
+      <p>Choose a task from the list to view its details.</p>
+    </div>
+  }
+
+</div>

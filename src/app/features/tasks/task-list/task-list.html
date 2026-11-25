@@ -1,0 +1,45 @@
+
+<div class="task-list">
+
+  @if (tasks().length === 0) {
+    <div class="empty-state">
+      <span>📋</span>
+      <h3>No tasks found</h3>
+      <p>Try changing your search or status filter.</p>
+    </div>
+  }
+
+  @for (task of tasks(); track task.id) {
+    <div
+      class="task-row"
+      [class.selected]="selectedTaskId() === task.id"
+      [class.compact]="compactView()"
+      (click)="selectTask(task)">
+
+      <div class="task-main">
+        <div class="task-title-row">
+          <span class="task-title">{{ task.title }}</span>
+
+          <span class="priority" [class]="task.priority.toLowerCase()">
+            {{ task.priority }}
+          </span>
+        </div>
+
+        <p class="task-description">{{ task.description }}</p>
+
+        <div class="task-meta">
+          <span class="status" [class.done]="task.status === 'Done'">
+            {{ task.status }}
+          </span>
+
+          <span class="due-date">
+            Due {{ task.dueDate }}
+          </span>
+        </div>
+      </div>
+
+      <span class="arrow">›</span>
+    </div>
+  }
+
+</div>

@@ -1,0 +1,284 @@
+
+.dashboard {
+  padding: 30px;
+  background: #101827;
+  min-height: 100%;
+  color: #f1f5f9;
+}
+
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 29px;
+    margin: 8px 0;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  p {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 13px;
+  }
+}
+
+.welcome-label {
+  color: #8b9fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.date-card {
+  background: #202e43;
+  padding: 13px 20px;
+  border: 1px solid #34445e;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  span {
+    color: #a5b4ca;
+    font-size: 11px;
+  }
+
+  strong {
+    color: white;
+    font-size: 13px;
+  }
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  padding: 22px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border: 1px solid #ffffff18;
+  transition: 0.25s;
+
+  &:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.12);
+  }
+
+  > span:not(.card-icon) {
+    color: #ffffffcf;
+    font-size: 12px;
+  }
+
+  h2 {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+  }
+
+  small {
+    color: #ffffffb5;
+    font-size: 10px;
+  }
+}
+
+.summary-card.blue {
+  background: linear-gradient(135deg, #2456a6, #367de2);
+}
+
+.summary-card.orange {
+  background: linear-gradient(135deg, #7043bb, #a45bd9);
+}
+
+.summary-card.green {
+  background: linear-gradient(135deg, #087f6a, #20ad87);
+}
+
+.summary-card.red {
+  background: linear-gradient(135deg, #a63e57, #e26368);
+}
+
+.card-icon {
+  width: 37px;
+  height: 37px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: #ffffff25;
+  font-size: 18px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.list-section {
+  background: #1a2638;
+  border: 1px solid #2b3b52;
+  border-radius: 17px;
+  padding: 23px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 18px;
+    color: white;
+    margin: 0 0 6px;
+  }
+
+  p {
+    color: #91a1b8;
+    font-size: 11px;
+    margin: 0;
+  }
+}
+
+.compact-btn {
+  background: #354a75;
+  color: #dbe6ff;
+  border: 1px solid #536c9f;
+  padding: 10px 13px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #101b2b;
+  border: 1px solid #35455e;
+  padding: 0 14px;
+  border-radius: 10px;
+  height: 45px;
+
+  span {
+    font-size: 22px;
+    color: #91a5c3;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+    color: white;
+
+    &::placeholder {
+      color: #8493a9;
+    }
+  }
+
+  &:focus-within {
+    border-color: #6689ef;
+  }
+}
+
+.status-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+
+  button {
+    border: none;
+    background: transparent;
+    padding: 9px 17px;
+    color: #a1afc4;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 12px;
+
+    &.active {
+      background: #354d83;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  }
+}
+
+.loading-state {
+  text-align: center;
+  padding: 45px;
+  color: #a1afc4;
+  font-size: 12px;
+}
+
+.loader {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #35445c;
+  border-top-color: #7797ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.details-section {
+  min-width: 0;
+}
+
+@media (max-width: 1050px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .summary-grid {
+    gap: 10px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+
+  .welcome-section {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .list-section {
+    padding: 14px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,86 @@
+
+<div class="settings-page">
+
+  <div class="page-heading">
+    <span class="eyebrow">WORKSPACE PREFERENCES</span>
+    <h1>Settings</h1>
+    <p>Manage your profile and workspace information.</p>
+  </div>
+
+  <div class="settings-grid">
+
+    <section class="profile-card">
+
+      <div class="profile-banner">
+        <span>YOUR PROFILE</span>
+        <div class="profile-avatar">
+          {{ userName().charAt(0) }}
+        </div>
+      </div>
+
+      <div class="profile-content">
+        <h2>{{ userName() }}</h2>
+        <p>Workspace Member</p>
+        <div class="profile-tag">✦ TaskFlow Member</div>
+      </div>
+
+    </section>
+
+    <section class="info-card">
+
+      <div class="card-heading">
+        <div class="info-icon">👤</div>
+        <div>
+          <h2>Account Information</h2>
+          <p>Your current profile details</p>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <span>Full Name</span>
+        <strong>{{ userName() }}</strong>
+      </div>
+
+      <div class="info-row">
+        <span>Account Type</span>
+        <strong>Workspace Member</strong>
+      </div>
+
+      <div class="info-row">
+        <span>Application</span>
+        <strong>TaskFlow</strong>
+      </div>
+
+      <div class="info-row">
+        <span>Theme</span>
+        <strong class="theme-label">Dark Mode</strong>
+      </div>
+
+      <div class="edit-profile">
+        <label for="userName">Edit Your Name</label>
+
+        <input
+          id="userName"
+          type="text"
+          [(ngModel)]="editableUserName"
+          placeholder="Enter your name"
+        />
+
+        <button type="button" (click)="saveUserName()">
+          Save Changes
+        </button>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="about-card">
+    <span>✦</span>
+    <div>
+      <h3>About TaskFlow</h3>
+      <p>A simple and organised way to manage your daily tasks and stay productive.</p>
+    </div>
+  </div>
+
+</div>

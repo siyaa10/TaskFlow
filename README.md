@@ -1,59 +1,148 @@
-# Taskflow
+# TaskFlow – Angular Task Management Application
+**GitHub Repository:** https://github.com/siyaa10/TaskFlow
+## 1. Project Overview
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
+TaskFlow is a task management application developed using Angular and TypeScript. It allows users to manage tasks, search and filter tasks, view task details, edit task information, and track overdue tasks.
 
-## Development server
+The application uses Angular Signals for state management and mock task data to simulate an API response.
 
-To start a local development server, run:
+## 2. Technologies Used
 
-```bash
-ng serve
-```
+- Angular 22
+- TypeScript
+- HTML
+- SCSS
+- Angular Signals
+- Reactive Forms
+- Angular Router
+- Local Storage
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 3. Features
 
-## Code scaffolding
+- Dashboard with task statistics.
+- Mock task loading with a loading indicator.
+- Search tasks with search persistence through URL query parameters.
+- Filter tasks using All, Open and Done tabs.
+- Compact view toggle.
+- Select a task and view its details.
+- Mark tasks as completed.
+- Automatically update overdue task count.
+- Edit tasks using reactive forms.
+- Form validation and unsaved changes warning.
+- Settings page with shared username.
+- Username persistence using browser Local Storage.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 4. Installation and Setup
 
-```bash
-ng generate component component-name
-```
+### Prerequisites
+- Node.js
+- npm
+- Angular CLI
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Steps to Run
 
-```bash
-ng generate --help
-```
+1. Clone the repository:
 
-## Building
+   ```bash
+   git clone https://github.com/siyaa10/TaskFlow.git
+   ```
 
-To build the project run:
+2. Navigate into the project folder:
+
+   ```bash
+   cd taskflow
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   ng serve
+   ```
+
+5. Open the application:
+
+   ```text
+   http://localhost:4200/
+   ```
+
+### Build the Application
+
+Run the following command to generate a production build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 5. State Management
 
-## Running unit tests
+The application uses Angular Signals to manage shared and component-level state.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### B. State Mapping Table
 
-```bash
-ng test
+| Data | Kind | Where it lives | Why |
+|---|---|---|---|
+| Search text | URL | TasksPage component and URL query parameters | Keeps the search value available after refreshing or sharing the URL. |
+| Selected status tab | Local UI | TasksPage component | Only the Tasks page needs this temporary filter selection. |
+| Compact view on/off | Local UI | TasksPage component | Controls how the task list is displayed. |
+| Task list from the API | Server | TaskService | The service owns the mock task data and simulates an API response with a delay. |
+| Selected task | Local UI | TasksPage component | Stores the selected task ID and derives the selected task for the details panel. |
+| Edit form has unsaved changes | Form | EditTaskComponent reactive form | Angular Reactive Forms tracks form values and dirty state. |
+| Overdue task count | Derived | TaskService computed signal | It is calculated from the task list and updates automatically when task state changes. |
+| User's name | Shared | UserService | A shared signal allows the top bar and Settings page to display the same username. |
+
+### C. Code Review – State Management Problems
+
+The supplied code-review example contains the following state management problems:
+
+**1. Public writable signals**
+
+The `tasks` and `overdueCount` signals are publicly accessible and writable. This allows components to modify service state directly.
+
+**How TaskFlow avoids it:** The writable signals are private, and read-only versions are exposed using `asReadonly()`. Only service methods can update the state.
+
+**2. Duplicate storage of derived data**
+
+The example stores `overdueCount` separately even though it can be calculated from the task list. This can cause inconsistent values when tasks change.
+
+**How TaskFlow avoids it:** The overdue count is calculated using a `computed()` signal based on the task list.
+
+**3. Using effect() to copy signal values**
+
+The TopBarComponent creates another signal and uses `effect()` to copy the overdue count from the service. This duplicates state unnecessarily.
+
+**How TaskFlow avoids it:** The top bar reads the shared computed signal directly from TaskService instead of maintaining another copy.
+
+## 6. Project Structure
+
+```text
+src/
+└── app/
+    ├── core/
+    │   ├── models/
+    │   └── services/
+    ├── features/
+    │   ├── tasks/
+    │   │   ├── tasks-page/
+    │   │   ├── task-list/
+    │   │   └── task-details/
+    │   ├── edit-task/
+    │   └── settings/
+    ├── shared/
+    │   └── top-bar/
+    ├── app.routes.ts
+    ├── app.ts
+    └── app.html
 ```
 
-## Running end-to-end tests
+## 7. Notes
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- This project uses mock task data; no backend API or database is connected.
+- Task data is managed in the Angular service during the application session.
+- The username is persisted using browser Local Storage.
+- Search text is maintained through URL query parameters.

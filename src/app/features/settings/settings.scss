@@ -1,0 +1,270 @@
+
+.settings-page {
+  padding: 35px;
+  min-height: 100%;
+  background: #101827;
+  color: #f1f5f9;
+}
+
+.page-heading {
+  margin-bottom: 30px;
+
+  .eyebrow {
+    color: #8b9fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+  }
+
+  h1 {
+    color: white;
+    font-size: 28px;
+    margin: 9px 0;
+  }
+
+  p {
+    color: #94a3b8;
+    font-size: 13px;
+  }
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 22px;
+}
+
+.profile-card {
+  background: #263750;
+  border: 1px solid #3a4d69;
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+.profile-banner {
+  height: 145px;
+  background: linear-gradient(125deg, #2456a6, #6745c7, #a052b9);
+  padding: 20px;
+  color: #ffffffc9;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.profile-avatar {
+  position: absolute;
+  bottom: -35px;
+  left: 25px;
+  width: 75px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #17263d;
+  border: 4px solid #263750;
+  color: #c6d7ff;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.profile-content {
+  padding: 48px 25px 25px;
+
+  h2 {
+    color: white;
+    font-size: 21px;
+    margin: 0 0 7px;
+  }
+
+  p {
+    color: #a5b4ca;
+    font-size: 12px;
+  }
+}
+
+.profile-tag {
+  display: inline-block;
+  margin-top: 15px;
+  background: #3c376c;
+  color: #d6c9ff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.info-card {
+  background: #1d2b40;
+  border: 1px solid #354861;
+  border-radius: 17px;
+  padding: 25px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 25px;
+
+  h2 {
+    color: white;
+    font-size: 16px;
+    margin: 0 0 5px;
+  }
+
+  p {
+    color: #9aabc1;
+    font-size: 11px;
+    margin: 0;
+  }
+}
+
+.info-icon {
+  width: 42px;
+  height: 42px;
+  background: #354c7a;
+  color: #d2dfff;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 0;
+  border-bottom: 1px solid #394c65;
+  font-size: 12px;
+
+  span {
+    color: #a5b4ca;
+  }
+
+  strong {
+    color: #ffffff;
+    text-align: right;
+  }
+
+  .theme-label {
+    color: #a9c0ff;
+  }
+}
+
+/* Edit profile section */
+.edit-profile {
+  margin-top: 25px;
+  padding: 22px;
+  background: linear-gradient(135deg, #263b59, #293653);
+  border: 1px solid #405779;
+  border-radius: 14px;
+
+  label {
+    display: block;
+    color: #dce7ff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 11px;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    background: #142238;
+    border: 1px solid #496184;
+    border-radius: 9px;
+    color: #ffffff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder {
+      color: #8293ad;
+    }
+
+    &:focus {
+      border-color: #719bff;
+      box-shadow: 0 0 0 3px #5685e52b;
+    }
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 17px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(110deg, #3978e8, #6556d9);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px #3978e84d;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.about-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 22px;
+  padding: 23px;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #263b63, #382d64);
+  border: 1px solid #4b5181;
+
+  > span {
+    font-size: 25px;
+    color: #c5b5ff;
+  }
+
+  h3 {
+    color: white;
+    font-size: 14px;
+    margin: 0 0 7px;
+  }
+
+  p {
+    color: #c0cce0;
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 750px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-page {
+    padding: 18px;
+  }
+
+  .info-card {
+    padding: 18px;
+  }
+
+  .edit-profile {
+    padding: 17px;
+
+    button {
+      width: 100%;
+    }
+  }
+}
